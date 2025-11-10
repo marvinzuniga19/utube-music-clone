@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:just_audio/just_audio.dart';
 
 class SimpleAudioService {
@@ -9,7 +10,9 @@ class SimpleAudioService {
     try {
       await _player.setUrl(url);
     } catch (e) {
-      print('Error al cargar URL: $e');
+      if (kDebugMode) {
+        print('Error al cargar URL: $e');
+      }
     }
   }
 
