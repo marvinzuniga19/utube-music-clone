@@ -7,7 +7,7 @@ class BottomPlayerBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final audio = ref.watch(audioServiceProvider);
+    final audio = ref.watch(playerProvider);
     return StreamBuilder<bool>(
       stream: audio.player.playingStream,
       builder: (context, snapshot) {

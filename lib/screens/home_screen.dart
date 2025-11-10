@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// ignore: implementation_imports
-import 'package:riverpod/src/framework.dart';
 import '../providers/search_provider.dart';
+import '../providers/player_provider.dart';
 import '../widgets/track_tile.dart';
 import '../widgets/bottom_player_bar.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
-
-  ProviderListenable? get playerProvider => null;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,7 +14,7 @@ class HomeScreen extends ConsumerWidget {
     final tracksAsync = ref.watch(searchProvider).rawQuery.isEmpty
         ? ref.watch(trendingTracksProvider)
         : ref.watch(searchResultsProvider);
-    final audioPlayer = ref.watch(playerProvider!);
+    final audioPlayer = ref.watch(playerProvider);
 
     return Scaffold(
       appBar: AppBar(
